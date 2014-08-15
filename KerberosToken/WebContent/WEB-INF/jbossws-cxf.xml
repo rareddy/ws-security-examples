@@ -1,0 +1,30 @@
+<beans xmlns='http://www.springframework.org/schema/beans'
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:beans='http://www.springframework.org/schema/beans'
+	xmlns:jaxws='http://cxf.apache.org/jaxws'
+    	xmlns:cxf="http://cxf.apache.org/core"
+	xsi:schemaLocation='http://cxf.apache.org/core
+    http://cxf.apache.org/schemas/core.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://cxf.apache.org/jaxws
+    http://cxf.apache.org/schemas/jaxws.xsd'>
+        
+    <jaxws:endpoint id="HelloWorldService"
+		address="http://primary.example.com:8080/kerberos/HelloWorld"
+        serviceName="s:HelloWorldService"
+        endpointName="s:HelloWorldPort"
+        xmlns:s="http://webservices.samples.jboss.org/"
+		implementor="org.teiid.test.webservice.impl.HelloWorldImpl"> 		    
+       <jaxws:properties>
+	       <entry key="ws-security.callback-handler" value="org.jboss.test.ws.jaxws.samples.wsse.kerberos.KeystorePasswordCallback"/>
+	       <entry key="ws-security.signature.properties" value="bob.properties" />
+	       <entry key="ws-security.bst.validator" value-ref="kerberosValidator" />
+       </jaxws:properties>
+    </jaxws:endpoint>
+    
+    <bean id="kerberosValidator" class="org.apache.ws.security.validate.KerberosTokenValidator">
+        <property name="contextName" value="bob"/>
+        <property name="serviceName" value="bob/service.primary.example.com"/>    
+    </bean>
+    
+</beans>
