@@ -23,8 +23,8 @@
     </jaxws:endpoint>
     
     <bean id="kerberosValidator" class="org.apache.ws.security.validate.KerberosTokenValidator">
-        <property name="contextName" value="bob"/>
-        <property name="serviceName" value="bob/service.primary.example.com"/>    
+        <property name="contextName" value="host"/>
+        <property name="serviceName" value="bob/service.example.com"/>    
     </bean>
     
 </beans>

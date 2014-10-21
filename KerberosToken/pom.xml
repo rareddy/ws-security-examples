@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.jboss.teiid</groupId>
-  <artifactId>teiid-saml-security</artifactId>
+  <artifactId>krb-soap-example</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
-  <name>Teiid Custom Security Mapper</name>
+  <name>Kreberos based SOAP Web-Service</name>
   <properties>
      <cxf.version>2.6.8</cxf.version>
      <wss4j.version>1.6.9</wss4j.version>
