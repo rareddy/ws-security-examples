@@ -1,0 +1,45 @@
+<beans xmlns:jaxrs="http://cxf.apache.org/jaxrs" 
+xmlns:cxf="http://cxf.apache.org/core"
+xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xsi:schemaLocation="
+ http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/util
+ http://www.springframework.org/schema/util/spring-util-2.0.xsd
+ http://cxf.apache.org/jaxrs
+ http://cxf.apache.org/schemas/jaxrs.xsd">
+     
+    <bean class="org.teiid.saml.jaxrs.HelloWorldImpl" id="hw" />
+    <bean id="samlHandler" class="org.apache.cxf.rs.security.saml.SamlEnvelopedInHandler"/>
+    
+    <bean id="redirectGetFilter" class="org.apache.cxf.rs.security.saml.sso.SamlRedirectBindingFilter">
+        <property name="idpServiceAddress" value="http://localhost:8080/idp/" />
+        <property name="assertionConsumerServiceAddress" value="http://localhost:8080/samlsvc/racs/sso" />
+        <property name="stateProvider" ref="stateManager" />
+    </bean>
+    
+    <bean id="consumerService" class="org.apache.cxf.rs.security.saml.sso.RequestAssertionConsumerService">
+        <property name="stateProvider" ref="stateManager" />
+        <property name="supportBase64Encoding" value="true" />
+        <property name="enforceAssertionsSigned" value="false"/>
+    </bean>    
+
+    <bean id="stateManager" class="org.apache.cxf.rs.security.saml.sso.state.HTTPSPStateManager"/>
+ 
+    <jaxrs:server address="/">
+        <jaxrs:serviceBeans>
+            <ref bean="consumerService" />
+            <ref bean="hw" />
+            <ref bean="stateManager"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="samlHandler"/>
+            <ref bean="redirectGetFilter" />
+        </jaxrs:providers>
+    </jaxrs:server>
+
+    <jaxrs:server address="/racs">
+        <jaxrs:serviceBeans>
+            <ref bean="consumerService" />
+        </jaxrs:serviceBeans>
+    </jaxrs:server>    
+</beans>
