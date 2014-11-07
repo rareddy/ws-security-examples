@@ -1,3 +1,5 @@
+TOD: Need to mavenize..
+
 properties needed to execute
 
 -Djavax.security.auth.useSubjectCredsOnly=false 
