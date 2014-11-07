@@ -22,4 +22,4 @@ Add the followint to JBoss EAP 6.1 to standalone.xml file and deploy the WAR fil
 </security-domain>
 
 
-For client usage from Jboss, check out the blogs https://developer.jboss.org/wiki/HowToImplementKerberosAuthenticationToASOAPWebServiceUsingTeiid
+For client usage from Jboss, check out the blogs https://developer.jboss.org/docs/DOC-52936
