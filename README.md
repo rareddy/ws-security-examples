@@ -10,6 +10,7 @@ Working Examples
 - REST with SAML
 - REST with OAuth2 - Talend folks has good example at https://github.com/Talend/tesb-rt-se/tree/master/examples/cxf/jaxrs-oauth2
 - SOAP with SAML in WS-Security - example see http://peterarockiaraj.wordpress.com/2009/09/04/developing-cxf-ws-security-with-saml/
+- OAuth 1.0A and OAuth2.0 client examples
 
 You need to setup KDC per http://coheigea.blogspot.com/2011/10/using-kerberos-with-web-services-part-i.html
 
