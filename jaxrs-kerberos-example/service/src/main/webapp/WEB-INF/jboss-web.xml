@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<jboss-web>  
+    <security-domain>java:/jaas/MW.LAB.ENG.BOS.REDHAT.COM</security-domain>  
+    <valve>  
+    <class-name>org.jboss.security.negotiation.NegotiationAuthenticator</class-name>  
+    </valve>  
+    <context-root>kerberos</context-root>  
+</jboss-web> 
