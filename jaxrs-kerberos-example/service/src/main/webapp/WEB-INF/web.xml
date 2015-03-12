@@ -30,6 +30,12 @@
             <role-name>krb5</role-name>  
         </auth-constraint>  
     </security-constraint>  
+
+    <login-config>
+       <auth-method>MW.LAB.ENG.BOS.REDHAT.COM</auth-method>
+       <realm-name>MW.LAB.ENG.BOS.REDHAT.COM</realm-name>
+    </login-config>    
+
      <security-role>  
         <description>security role</description>  
         <role-name>krb5</role-name>  

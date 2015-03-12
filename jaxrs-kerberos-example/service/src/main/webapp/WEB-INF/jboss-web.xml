@@ -4,5 +4,6 @@
     <valve>  
     <class-name>org.jboss.security.negotiation.NegotiationAuthenticator</class-name>  
     </valve>  
+    <jacc-star-role-allow>true</jacc-star-role-allow>
     <context-root>kerberos</context-root>  
 </jboss-web> 
